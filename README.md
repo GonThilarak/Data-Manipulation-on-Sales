@@ -15,3 +15,14 @@ FROM CUSTOMERS;
 SELECT last_name, first_name, points, (points*10)+100
 FROM CUSTOMERS;
 ```
+###### Now, Instead of creating a temporary column, I have created a permanent column that manipulates the [points] column into [(points + 10)*100] giving it the name of [discount_factor].
+```
+ALTER TABLE customers
+ADD Column discount_factor INT;
+
+UPDATE customers
+SET discount_factor = (points + 10)*100;
+
+SELECT last_name, first_name, points, discount_factor
+FROM CUSTOMERS;
+```
